@@ -77,7 +77,7 @@ def chalk_effect(img):
 random.seed(43)
 # Change the value to scale up the dataset size
 NK_Value = 1
-output_folder = "DataSet%dKHDIB"%NK_Value
+output_folder = "../dataset/DataSet%dKHDIB"%NK_Value
 
 
 try:
