@@ -8,6 +8,7 @@ from vcam import vcam,meshGen
 from tqdm import tqdm
 import random
 
+import shutil
 
 def fg_processing(img):
 
@@ -214,3 +215,9 @@ for div in divisions:
         print("Images Generated : ", count)
         if count> 200:
             break
+
+for div in divisions:
+    pages_dir =  os.path.join(output_folder, "Pages_%s"%div)
+    if os.path.exists(pages_dir):
+        shutil.rmtree(pages_dir)
+        print("Removed pages directory: ", pages_dir)
