@@ -125,10 +125,10 @@ for div in divisions:
             texture_count+=1
             
 
-    output_path = output_folder+"/Input_%s"%div
-    GT_path = output_folder+"/GT_%s"%div
-    os.mkdir(output_path)
-    os.mkdir(GT_path)
+    output_path = os.path.join(output_folder, div,"imgs")
+    GT_path = os.path.join(output_folder, div,"gt_imgs")
+    os.makedirs(output_path, exist_ok=True)
+    os.makedirs(GT_path, exist_ok=True)
     augmented_texture_paths = glob.glob(new_pages_path+"/*")
 
     count = 1
@@ -157,8 +157,8 @@ for div in divisions:
             random.shuffle(augmented_texture_paths)
             for aug_txt_pth in augmented_texture_paths[:NK_Value]:
                 input_img = apply_texture(img , cv2.imread(aug_txt_pth))
-                cv2.imwrite(output_path+"/input_%d.jpg"%count, input_img)
-                cv2.imwrite(GT_path+"/mask_%d.jpg"%count, gt_img)
+                cv2.imwrite(output_path+"/%d.jpg"%count, input_img)
+                cv2.imwrite(GT_path+"/%d.jpg"%count, gt_img)
                 count+=1
 
             img_wrapped = x_strech(img)
@@ -167,8 +167,8 @@ for div in divisions:
             random.shuffle(augmented_texture_paths)
             for aug_txt_pth in augmented_texture_paths[:NK_Value]:
                 input_img = apply_texture(img_wrapped , cv2.imread(aug_txt_pth))
-                cv2.imwrite(output_path+"/input_%d.jpg"%count, input_img)
-                cv2.imwrite(GT_path+"/mask_%d.jpg"%count, gt_img_wrapped)
+                cv2.imwrite(output_path+"/%d.jpg"%count, input_img)
+                cv2.imwrite(GT_path+"/%d.jpg"%count, gt_img_wrapped)
                 count+=1
 
             img_wrapped = y_strech(img)
@@ -177,8 +177,8 @@ for div in divisions:
             random.shuffle(augmented_texture_paths)
             for aug_txt_pth in augmented_texture_paths[:NK_Value]:
                 input_img = apply_texture(img_wrapped , cv2.imread(aug_txt_pth))
-                cv2.imwrite(output_path+"/input_%d.jpg"%count, input_img)
-                cv2.imwrite(GT_path+"/mask_%d.jpg"%count, gt_img_wrapped)
+                cv2.imwrite(output_path+"/%d.jpg"%count, input_img)
+                cv2.imwrite(GT_path+"/%d.jpg"%count, gt_img_wrapped)
                 count+=1
 
         for i in range(4):
@@ -189,8 +189,8 @@ for div in divisions:
             random.shuffle(augmented_texture_paths)
             for aug_txt_pth in augmented_texture_paths[:NK_Value]:
                 input_img = apply_texture(img , cv2.imread(aug_txt_pth))
-                cv2.imwrite(output_path+"/input_%d.jpg"%count, input_img)
-                cv2.imwrite(GT_path+"/mask_%d.jpg"%count, gt_img)
+                cv2.imwrite(output_path+"/%d.jpg"%count, input_img)
+                cv2.imwrite(GT_path+"/%d.jpg"%count, gt_img)
                 count+=1
             
             img_wrapped = x_strech(img)
@@ -199,8 +199,8 @@ for div in divisions:
             random.shuffle(augmented_texture_paths)
             for aug_txt_pth in augmented_texture_paths[:NK_Value]:
                 input_img = apply_texture(img_wrapped , cv2.imread(aug_txt_pth))
-                cv2.imwrite(output_path+"/input_%d.jpg"%count, input_img)
-                cv2.imwrite(GT_path+"/mask_%d.jpg"%count, gt_img_wrapped)
+                cv2.imwrite(output_path+"/%d.jpg"%count, input_img)
+                cv2.imwrite(GT_path+"/%d.jpg"%count, gt_img_wrapped)
                 count+=1
 
             img_wrapped = y_strech(img)
@@ -209,8 +209,8 @@ for div in divisions:
             random.shuffle(augmented_texture_paths)
             for aug_txt_pth in augmented_texture_paths[:NK_Value]:
                 input_img = apply_texture(img_wrapped , cv2.imread(aug_txt_pth))
-                cv2.imwrite(output_path+"/input_%d.jpg"%count, input_img)
-                cv2.imwrite(GT_path+"/mask_%d.jpg"%count, gt_img_wrapped)
+                cv2.imwrite(output_path+"/%d.jpg"%count, input_img)
+                cv2.imwrite(GT_path+"/%d.jpg"%count, gt_img_wrapped)
                 count+=1
         print("Images Generated : ", count)
         if count> 200:
