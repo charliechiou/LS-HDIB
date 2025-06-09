@@ -12,7 +12,7 @@ import random
 def fg_processing(img):
 
 	gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-	thresh = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY_INV,35,20)
+	thresh = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,35,20)
 
 	return thresh
 
